@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/dummy.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/build/generated/ap_generated_sources/debug/out/com/resources/uploadlib/databinding/AdapterUploadItemBindingImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/build/intermediates/packaged_res/debug/layout/activity_gallery_preview.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/build/intermediates/packaged_res/debug/layout/adapter_upload_item.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/readme">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/ChooseDialog.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/ResourcesBean.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/ResourcesBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/UpLoadFactory.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/UploadAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/UploadHelper.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/UploadUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/adapter/ChooseActionAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/adapter/GalleryAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/adapter/UploadAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/base/BaseDialog.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/base/ResourcesBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/base/ResourcesState.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/base/ResourcesType.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/bean/ChooseActionItem.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/bean/FileResponse.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/bean/FileResultBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/bean/ItemStatusBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/bean/ResourcesBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/camera/CameraVideoActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/camera/CameraXUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/camera/FileCameraUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/camera/VerticalSeekBar.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/choose/ChooseActionState.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/choose/ChooseItemClickListener.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/choose/ResourcesState.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/gallery/GalleryPreviewActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/gallery/PreviewFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/EE.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/Progress.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressInterceptor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressInterceptor.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressListener.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressOutputStream.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressRequestBody.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressRequestBody.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/ProgressResponseBody.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/SerialUploadTask.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/TaskSerialUpload.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/UpLoadIntentService.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/UpLoadTask.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/UploadApi.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/UploadRetrofit.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/http/UploadTask.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/util/GlideEngine.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/util/ResConfig.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/util/ResourcesManager.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/util/SelectorFactory.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/util/UploadHelper.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/vide/CircleProgressBar.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/vide/SquareLayout.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/drawable/layer_progress_drawable.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/drawable/shape_dialog_bg.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/drawable/shape_mask_7f.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/drawable/shape_round_white.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/drawable/upload_add.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/action_item.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/action_item.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/activity_camera_video.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/activity_gallery_preview.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/adapter_upload_item.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/dialog_choose.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/layout/fragment_preview.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/values/attrs.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/values/color.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/values/style.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/res/xml/file_paths_public.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/compose/updatapicturedemo/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/themes.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/settings.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/adapter/CarTypeAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/adapter/ListValueAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/dialog/ListValueDialog.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/ui/main/TollOperationFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/ui/serviceArea/ServiceCameraFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/ui/widget/CharMarker.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/utlis/BarChartManagger.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/utlis/PublicUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/java/com/tayh/integratedleader/utlis/YoyDoubleLineChartManagger.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/drawable/selector_btn_content.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/drawable/selector_btn_content_text.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/drawable/shape_marker_bg.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/layout/adapter_list_value.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/layout/dialog_list_view.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/layout/fragment_toll_operation.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/app/src/main/res/layout/layout_char_marker.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/baselibrary/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/baselibrary/src/main/java/com/tayh/baselibrary/base/BaseDialog.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/config.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager-leader/local.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager/app/src/main/java/com/tayh/internalmanager/login/VpnSettingHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager/baselibrary/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager/baselibrary/src/main/java/com/tayh/baselibrary/utils/map/BDLocationHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager/safelyrisk/src/main/java/com/wttech/safelyrisk/main/add/HiddenDangerAddActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/ChooseDialog.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/UpLoadBuilder.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/UpLoadFactory.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/UpLoadHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/UploadHelper.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/UploadUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/adapter/UploadAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/bean/ResourcesBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/camera/CameraVideoActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/camera/CameraXUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/camera/FileCameraUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/choose/ChooseActionState.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/http/UpLoadTask.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/http/UploadRetrofit.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/util/SelectorFactory.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/vide/SquareLayout.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/view/SquareLayout.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/MyApplication.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/AlarmDetailsActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/ClockRankActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/HandleCarRoadActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/OpenFileActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/PolicyFileDetailsActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/SpecialEventActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/SpecialOperationsActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/bean/request/SpecialCarRequest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/bean/result/SpecialDetailBean.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/fragment/HomeFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/AppBaseModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/HandleCarRoadModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/SpecialEventModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/SpecialOperationsModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/utils/KeyBoardUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/utils/PublicAction.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/view/HandlerItemView.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout-sw600dp/activity_handle_car_road.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout-sw600dp/activity_open_file.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout-sw600dp/adapter_policy_file_item.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/activity_handle_car_road.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/activity_open_file.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/activity_special_operations.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/adapter_policy_file_item.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/cameraLib/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/config.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/settings.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/uploadlibs/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/uploadlibs/src/main/java/com/wttech/uploadlibs/UploadSelectHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/uploadlibs/src/main/java/com/wttech/uploadlibs/gallery/GalleyAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/uploadlibs/src/main/java/com/wttech/uploadlibs/provider/net/UploaderImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

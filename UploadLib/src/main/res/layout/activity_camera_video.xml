@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="mActivity"
+            type="com.resources.uploadlib.camera.CameraVideoActivity" />
+        <variable
+            name="mTime"
+            type="String" />
+        <variable
+            name="isVideoIng"
+            type="Boolean" />
+        <variable
+            name="isEnd"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+        <androidx.camera.view.PreviewView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/pvView"/>
+
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/svp_detail_player"
+            android:layout_width="match_parent"
+            android:visibility="@{isEnd?View.VISIBLE:View.GONE}"
+            android:layout_height="match_parent" />
+
+
+        <CheckBox
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:button="@null"
+            android:checked="@{isVideoIng}"
+            android:visibility="@{isEnd?View.GONE:View.VISIBLE}"
+            android:id="@+id/cb_video_switch"
+            android:background="@drawable/selector_record_video"
+            android:layout_marginBottom="60dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/cb_video_switch"
+            app:layout_constraintBottom_toBottomOf="@id/cb_video_switch"
+            app:layout_constraintLeft_toRightOf="@id/cb_video_switch"
+            android:background="@drawable/shape_switch_bg"
+            android:padding="8dp"
+            android:visibility="@{isVideoIng || isEnd ? View.GONE:View.VISIBLE}"
+            android:onClick="@{() -> mActivity.onItemClick(0)}"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@mipmap/switch_lens"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:text="@{mTime}"
+            android:visibility="@{isEnd?View.GONE:View.VISIBLE}"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="60dp"/>
+        <com.resources.uploadlib.camera.VerticalSeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:defaultColor="#999999"
+            app:ActiveColor="#FFFFFF"
+            android:visibility="@{isEnd?View.GONE:View.VISIBLE}"
+            app:seekBarPadding="5dp"
+            android:id="@+id/videoSeekBar"
+            app:seekBarRadius="8dp"
+            android:layout_marginRight="15dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:visibility="@{isEnd?View.VISIBLE:View.GONE}"
+            android:onClick="@{()->mActivity.cameraOperate(0)}"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@mipmap/camera_ok"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:visibility="@{isEnd?View.VISIBLE:View.GONE}"
+            android:onClick="@{()->mActivity.cameraOperate(1)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@mipmap/camera_cancel"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

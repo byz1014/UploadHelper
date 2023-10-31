@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.resources.uploadlib.choose.ResourcesState" />
+        <import type="com.resources.uploadlib.choose.ResourcesType"/>
+        <import type="android.view.View" />
+        <variable
+            name="isLooker"
+            type="Boolean" />
+        <variable
+            name="mPosition"
+            type="Integer" />
+        <variable
+            name="mAdapter"
+            type="com.resources.uploadlib.adapter.UploadAdapter" />
+        <variable
+            name="mResourcesBean"
+            type="com.resources.uploadlib.bean.ResourcesBean" />
+    </data>
+
+    <com.resources.uploadlib.view.SquareLayout
+        android:id="@+id/cl_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:onClick="@{() -> mAdapter.onItemClick(mPosition,1)}"
+            android:background="@drawable/shape_round_white"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="6dp" />
+
+        <ImageView
+            android:id="@+id/iv_small_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/riv_content"
+            app:layout_constraintLeft_toLeftOf="@+id/riv_content"
+            app:layout_constraintRight_toRightOf="@+id/riv_content"
+            app:layout_constraintTop_toTopOf="@+id/riv_content" />
+
+        <RelativeLayout
+            android:id="@+id/ll_ing"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_mask_7f"
+            android:orientation="horizontal"
+            android:visibility="@{mResourcesBean.state == ResourcesState.UPLOAD_ING || mResourcesBean.state == ResourcesState.UPLOAD_START ? View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/riv_content"
+            app:layout_constraintLeft_toLeftOf="@+id/riv_content"
+            app:layout_constraintRight_toRightOf="@+id/riv_content"
+            app:layout_constraintTop_toTopOf="@+id/riv_content">
+
+
+            <ProgressBar
+                android:id="@+id/pb_loading"
+                style="?android:progressBarStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="#ff1d77fd"
+                android:progressDrawable="@drawable/layer_progress_drawable" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{mResourcesBean.progress}"
+                android:id="@+id/tv_status"
+                android:layout_centerInParent="true"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_error"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_mask_7f"
+            android:gravity="center"
+            android:onClick="@{() -> mAdapter.onItemClick(mPosition,-1)}"
+            android:orientation="horizontal"
+            android:visibility="@{mResourcesBean.state == ResourcesState.UPLOAD_FAIL  ? View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/riv_content"
+            app:layout_constraintLeft_toLeftOf="@+id/riv_content"
+            app:layout_constraintRight_toRightOf="@+id/riv_content"
+            app:layout_constraintTop_toTopOf="@+id/riv_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重新上传"
+                android:drawablePadding="@dimen/dp_10"
+                android:drawableTop="@mipmap/uplib_ic_warning"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mAdapter.onItemClick(mPosition,0)}"
+            android:visibility="@{isLooker || mResourcesBean.type == ResourcesType.ADD ? View.GONE : View.VISIBLE}"
+            android:src="@mipmap/ic_upload_del"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.resources.uploadlib.view.SquareLayout>
+</layout>

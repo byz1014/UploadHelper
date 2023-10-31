@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isVideo"
+            type="Boolean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.luck.picture.lib.photoview.PhotoView
+            android:id="@+id/upload_photo_view"
+            android:layout_width="match_parent"
+            android:visibility="@{isVideo?View.GONE:View.VISIBLE}"
+            android:layout_height="match_parent"/>
+
+
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/svp_detail_player"
+            android:layout_width="match_parent"
+            android:visibility="@{isVideo?View.VISIBLE:View.GONE}"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+</layout>

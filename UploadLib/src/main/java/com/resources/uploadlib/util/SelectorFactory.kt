@@ -74,7 +74,6 @@ fun LocalMedia.LocalMedia2ResourcesBean():ResourcesBean{
         return  ResourcesBean().apply {
             this.type = ResourcesType.PICTURE
             this.state = ResourcesState.UPLOAD_ING
-            this.coverImage = compressPath
             this.mediaType = mimeType
             this.localPath = compressPath
             this.fileSize = "${(this@LocalMedia2ResourcesBean.size.toFloat() / 1024.0f / 1024.0f)}M"
@@ -83,7 +82,6 @@ fun LocalMedia.LocalMedia2ResourcesBean():ResourcesBean{
         return ResourcesBean().apply {
             this.type = ResourcesType.VIDEO
             this.state = ResourcesState.UPLOAD_ING
-            this.coverImage = ""
             this.mediaType = mimeType
             this.localPath = realPath
             this.fileSize = "${(this@LocalMedia2ResourcesBean.size.toFloat() / 1024.0f / 1024.0f)}M"

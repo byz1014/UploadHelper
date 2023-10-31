@@ -2,6 +2,7 @@ package com.resources.uploadlib.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -18,6 +19,7 @@ import com.google.gson.Gson
 import com.makeramen.roundedimageview.RoundedImageView
 import com.resources.uploadlib.*
 import com.resources.uploadlib.bean.ResourcesBean
+import com.resources.uploadlib.camera.getFirstFrame
 import com.resources.uploadlib.choose.ChooseActionState
 import com.resources.uploadlib.choose.ResourcesState
 import com.resources.uploadlib.choose.ResourcesType
@@ -52,12 +54,12 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                     ivSmallIcon.setImageResource(R.mipmap.ic_upload_add)
                 }
                 ResourcesType.VIDEO -> {
-                    Glide.with(context)
-                        .load(item.coverImage)
-                        .error(R.drawable.shape_round_white)
-                        .fallback(R.drawable.shape_round_white)
-                        .placeholder(R.drawable.shape_round_white)
-                        .into(rivContent)
+                    if(item.coverImage == null){
+                        item.httpPath.ifEmpty { item.localPath  }.getImage{
+                            item.coverImage = it
+                            it.showCoverImage(rivContent)
+                        }
+                    }
                     ivSmallIcon.setImageResource(R.mipmap.ic_upload_play)
                 }
                 ResourcesType.AUDIO -> {
@@ -65,10 +67,8 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                 }
                 ResourcesType.PICTURE -> {
                     ivSmallIcon.visibility = View.GONE
-                    var path = if (item.localPath.isEmpty()) {
+                    var path = item.localPath.ifEmpty {
                         item.httpPath
-                    } else {
-                        item.localPath
                     }
                     Glide.with(context)
                         .load(path)
@@ -134,5 +134,30 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
     }
 
     var handler = Handler(Looper.getMainLooper())
+
+
+    fun Bitmap?.showCoverImage(rivContent: RoundedImageView) {
+        Glide.with(context)
+            .load(this)
+            .error(R.drawable.shape_round_white)
+            .fallback(R.drawable.shape_round_white)
+            .placeholder(R.drawable.shape_round_white)
+            .into(rivContent)
+    }
+
+
+    /**
+     * 获取视频第一帧是个耗时任务
+     *
+     */
+    fun String.getImage(action:(Bitmap?)->Unit){
+        Thread{
+            getFirstFrame().apply {
+                handler.post {
+                    action(this)
+                }
+            }
+        }.start()
+    }
 }
 

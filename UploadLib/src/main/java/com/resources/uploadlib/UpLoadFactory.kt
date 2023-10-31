@@ -100,7 +100,6 @@ class UpLoadFactory(var mActivity:Activity) {
                     mFileName?.apply {
                         fileName = this
                     }
-                    this.coverImage = ""
                     uploadAdapter.data.removeIf { it.type == ResourcesType.ADD }
                     uploadAdapter.data.add(this)
                     var mIndex = uploadAdapter.data.size

@@ -1,5 +1,6 @@
 package com.resources.uploadlib.bean
 
+import android.graphics.Bitmap
 import com.luck.picture.lib.entity.LocalMedia
 import com.resources.uploadlib.choose.ResourcesState
 import com.resources.uploadlib.choose.ResourcesType
@@ -18,7 +19,7 @@ class ResourcesBean {
     var localPath = ""
     var httpPath = ""
     var state = ResourcesState.UPLOAD_START
-    var coverImage = ""
+    var coverImage: Bitmap?=null
     var isUpload = false
     var fileSize = "0M"
     var progress:String = "0%"

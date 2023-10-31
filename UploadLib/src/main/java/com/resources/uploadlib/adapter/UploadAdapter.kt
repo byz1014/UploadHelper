@@ -54,12 +54,12 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                     ivSmallIcon.setImageResource(R.mipmap.ic_upload_add)
                 }
                 ResourcesType.VIDEO -> {
-                    if(item.coverImage == null){
-                        item.httpPath.ifEmpty { item.localPath  }.getImage{
+                    if (item.coverImage == null) {
+                        item.httpPath.ifEmpty { item.localPath }.getImage {
                             item.coverImage = it
-                            it.showCoverImage(rivContent)
                         }
                     }
+                    item.coverImage.showCoverImage(rivContent)
                     ivSmallIcon.setImageResource(R.mipmap.ic_upload_play)
                 }
                 ResourcesType.AUDIO -> {

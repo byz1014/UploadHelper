@@ -1,7 +1,12 @@
 package com.resources.uploadlib.gallery
 
+import android.content.Context
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,12 +31,15 @@ import java.io.File
  * @info
  */
 class PreviewFragment(var mResourcesBean: ResourcesBean) : Fragment() {
+
     var mFragmentBinding:FragmentPreviewBinding?=null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
 
         return DataBindingUtil
             .inflate<FragmentPreviewBinding>(
@@ -53,11 +61,11 @@ class PreviewFragment(var mResourcesBean: ResourcesBean) : Fragment() {
     }
 
     private fun showPicture(mBinding: FragmentPreviewBinding) {
-       mResourcesBean.localPath.ifEmpty { mResourcesBean.httpPath }.apply {
-           Glide.with(requireActivity())
-               .load(this)
-               .into(mBinding.uploadPhotoView)
-       }
+        mResourcesBean.localPath.ifEmpty { mResourcesBean.httpPath }.apply {
+            Glide.with(requireActivity())
+                .load(this)
+                .into(mBinding.uploadPhotoView)
+        }
     }
 
     private fun showVideo(mBinding: FragmentPreviewBinding) {
@@ -67,23 +75,40 @@ class PreviewFragment(var mResourcesBean: ResourcesBean) : Fragment() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT
             )
-            it.getFirstFrame()?.apply {
-                thumbImageView.setImageBitmap(this)
-            }
-            GSYVideoOptionBuilder().apply {
-                setThumbImageView(thumbImageView)
-                    .setIsTouchWiget(true)
-                    .setRotateViewAuto(false)
-                    .setLockLand(false)
-                    .setAutoFullWithSize(true)
-                    .setShowFullAnimation(false)
-                    .setNeedLockFull(true)
-                    .setUrl(it)
-                    .setCacheWithPlay(false)
-                    .build(mBinding.svpDetailPlayer)
+
+            it.getImage { bitmap ->
+                thumbImageView.setImageBitmap(bitmap)
+                GSYVideoOptionBuilder().apply {
+                    setThumbImageView(thumbImageView)
+                        .setIsTouchWiget(true)
+                        .setRotateViewAuto(false)
+                        .setLockLand(false)
+                        .setAutoFullWithSize(true)
+                        .setShowFullAnimation(false)
+                        .setNeedLockFull(true)
+                        .setUrl(it)
+                        .setCacheWithPlay(false)
+                        .build(mBinding.svpDetailPlayer)
+                }
             }
 
+
+
         }
+    }
+
+
+    var handler = Handler(Looper.getMainLooper())
+
+
+    private fun String.getImage(action:(Bitmap?)->Unit){
+        Thread{
+            getFirstFrame().apply {
+                handler.post {
+                    action(this)
+                }
+            }
+        }.start()
     }
 
 

@@ -12,14 +12,12 @@ import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.luck.picture.lib.PictureSelector
 import com.resources.uploadlib.base.BaseDialog
+import com.resources.uploadlib.bean.RequestCodeBean
 import com.resources.uploadlib.camera.CameraVideoActivity
 import com.resources.uploadlib.choose.ChooseActionState
 import com.resources.uploadlib.databinding.ActionItemBinding
 import com.resources.uploadlib.databinding.DialogChooseBinding
-import com.resources.uploadlib.util.ChoosePicture
-import com.resources.uploadlib.util.ChooseVideo
-import com.resources.uploadlib.util.ResConfig
-import com.resources.uploadlib.util.TakePhoto
+import com.resources.uploadlib.util.*
 
 
 /**
@@ -31,7 +29,7 @@ import com.resources.uploadlib.util.TakePhoto
 class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseActionState>) :
     BaseDialog<DialogChooseBinding>(mActivity) {
 
-
+    var mRequestCodeBean = RequestCodeBean()
 
     override fun isTouchOutCancel(): Boolean = true
 
@@ -75,7 +73,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 ).onPermission {
                     PictureSelector
                         .create(mActivity)
-                        .ChooseVideo(MAX, VIDEO_MAX_SECOND  * 1000)
+                        .ChooseVideo(MAX, VIDEO_MAX_SECOND  * 1000,mRequestCodeBean.mChooseVideoCode)
                 }
             }
             ChooseActionState.CHOOSE_PICTURE -> {//选择图片
@@ -85,7 +83,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 ).onPermission {
                     PictureSelector
                         .create(mActivity)
-                        .ChoosePicture(MAX)
+                        .ChoosePicture(MAX,mRequestCodeBean.mChoosePictureCode)
                 }
             }
             ChooseActionState.CHOOSE_PICTURE_AND_VIDEO -> {//选择图片和视频
@@ -95,7 +93,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 ).onPermission {
                     PictureSelector
                         .create(mActivity)
-                        .TakePhoto()
+                        .TakePhoto(mState.actionCode)
                 }
             }
             ChooseActionState.CHOOSE_TAKE_PHOTO -> {//拍摄图片
@@ -106,7 +104,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 ).onPermission {
                     PictureSelector
                         .create(mActivity)
-                        .TakePhoto()
+                        .TakePhoto(mRequestCodeBean.mPictureCode)
                 }
             }
             ChooseActionState.CHOOSE_CAMERA -> {//拍摄视频
@@ -117,7 +115,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                     Manifest.permission.RECORD_AUDIO
                 ).onPermission {
                     Intent(mActivity, CameraVideoActivity::class.java).apply {
-                        mActivity.startActivityForResult(this, ResConfig.CAMERA_CODE)
+                        mActivity.startActivityForResult(this,mRequestCodeBean.mVideoCode)
                     }
                 }
             }
@@ -142,7 +140,6 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
             override fun onGranted() {
                 action()
             }
-
             override fun onDenied() {
                 ToastUtils.showShort("缺少必要权限，请手动授权")
             }

@@ -18,6 +18,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.gson.Gson
 import com.makeramen.roundedimageview.RoundedImageView
 import com.resources.uploadlib.*
+import com.resources.uploadlib.bean.RequestCodeBean
 import com.resources.uploadlib.bean.ResourcesBean
 import com.resources.uploadlib.camera.getFirstFrame
 import com.resources.uploadlib.choose.ChooseActionState
@@ -25,6 +26,7 @@ import com.resources.uploadlib.choose.ResourcesState
 import com.resources.uploadlib.choose.ResourcesType
 import com.resources.uploadlib.databinding.AdapterUploadItemBinding
 import com.resources.uploadlib.gallery.GalleryPreviewActivity
+import com.resources.uploadlib.util.*
 
 
 /**
@@ -36,7 +38,13 @@ import com.resources.uploadlib.gallery.GalleryPreviewActivity
 class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<ResourcesBean,
         BaseDataBindingHolder<AdapterUploadItemBinding>>(R.layout.adapter_upload_item, mList) {
 
-
+    var actionStateList = mutableListOf<ChooseActionState>().apply {
+        add(ChooseActionState.CHOOSE_PICTURE)
+        add(ChooseActionState.CHOOSE_VIDEO)
+        add(ChooseActionState.CHOOSE_TAKE_PHOTO)
+        add(ChooseActionState.CHOOSE_CAMERA)
+    }
+    var mRequestCodeBean = RequestCodeBean()
     override fun convert(
         holder: BaseDataBindingHolder<AdapterUploadItemBinding>,
         item: ResourcesBean
@@ -55,9 +63,13 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                 }
                 ResourcesType.VIDEO -> {
                     if (item.coverImage == null) {
-                        item.httpPath.ifEmpty { item.localPath }.getImage {
-                            item.coverImage = it
-                        }
+                        item.httpPath.ifEmpty { item.localPath }
+                            .getImage(holder.adapterPosition) { position, mBitmap ->
+                                item.coverImage = mBitmap
+                                mBitmap?.apply {
+                                    notifyItemChanged(position)
+                                }
+                            }
                     }
                     item.coverImage.showCoverImage(rivContent)
                     ivSmallIcon.setImageResource(R.mipmap.ic_upload_play)
@@ -67,8 +79,10 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                 }
                 ResourcesType.PICTURE -> {
                     ivSmallIcon.visibility = View.GONE
-                    var path = item.localPath.ifEmpty {
+                    var path = if (item.localPath.isEmpty()) {
                         item.httpPath
+                    } else {
+                        item.localPath
                     }
                     Glide.with(context)
                         .load(path)
@@ -88,16 +102,21 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun onItemClick(position: Int, index: Int) {
         when (index) {
             0 -> {//删除
-                    this.data.removeAt(position)
-                    checkAddItem()
+                this.data.removeAt(position)
+                checkAddItem()
             }
             1 -> {//主图
                 when (getItem(position).type) {
                     ResourcesType.ADD -> {
-                        (context as Activity).showChooseDialog(FILE_MAX - data.size + 1)
+                        (context as Activity).showChooseDialog(
+                            FILE_MAX - data.size + 1,
+                            actionStateList,
+                            mRequestCodeBean
+                        )
                     }
                     ResourcesType.PICTURE,
                     ResourcesType.VIDEO -> {
@@ -113,22 +132,19 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                             putExtra("maxNum", maxIndex)
                             context.startActivity(this)
                         }
-
                     }
                 }
             }
             -1 -> {//error 重新上传
-                    getItem(position).state = ResourcesState.UPLOAD_START
-                    notifyItemChanged(position)
-                    getItem(position).onUpLoad {
-                        getItemPosition(it).apply {
-                            handler.post {
-                                notifyItemChanged(this)
-                            }
-
+                getItem(position).state = ResourcesState.UPLOAD_START
+                notifyItemChanged(position)
+                getItem(position).onUpLoad {
+                    getItemPosition(it).apply {
+                        handler.post {
+                            notifyItemChanged(this)
                         }
                     }
-
+                }
             }
         }
     }
@@ -150,11 +166,11 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
      * 获取视频第一帧是个耗时任务
      *
      */
-    fun String.getImage(action:(Bitmap?)->Unit){
-        Thread{
+    fun String.getImage(position: Int, action: (position: Int, bitmap: Bitmap?) -> Unit) {
+        Thread {
             getFirstFrame().apply {
                 handler.post {
-                    action(this)
+                    action(position, this)
                 }
             }
         }.start()

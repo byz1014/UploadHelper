@@ -14,12 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.luck.picture.lib.PictureSelector
 import com.resources.uploadlib.adapter.UploadAdapter
+import com.resources.uploadlib.bean.RequestCodeBean
 import com.resources.uploadlib.bean.ResourcesBean
 import com.resources.uploadlib.choose.ChooseActionState
 import com.resources.uploadlib.choose.ResourcesState
 import com.resources.uploadlib.choose.ResourcesType
 import com.resources.uploadlib.http.UpLoadTask
-import com.resources.uploadlib.util.ResConfig
+import com.resources.uploadlib.util.*
 import java.io.File
 
 
@@ -29,7 +30,8 @@ import java.io.File
  * @blame Android Team
  * @info
  */
-class UpLoadFactory(var mActivity:Activity) {
+class UpLoadFactory(var mActivity: Activity) {
+
     private val uploadAdapter by lazy { UploadAdapter(arrayListOf()) }
 
     //初始化上传任务
@@ -37,8 +39,11 @@ class UpLoadFactory(var mActivity:Activity) {
         UpLoadTask {
             var index = uploadAdapter.getItemPosition(it)
             notifyAdapter(index)
-             if(uploadAdapter.getItem(index).state == ResourcesState.UPLOAD_START ||uploadAdapter.getItem(index).state == ResourcesState.UPLOAD_ING){
-               return@UpLoadTask
+            if (uploadAdapter.getItem(index).state == ResourcesState.UPLOAD_START || uploadAdapter.getItem(
+                    index
+                ).state == ResourcesState.UPLOAD_ING
+            ) {
+                return@UpLoadTask
             }
             toUploadFile(index + 1)
         }
@@ -58,23 +63,25 @@ class UpLoadFactory(var mActivity:Activity) {
         }
     }
 
-   // 通知进行一次上传任务
+    // 通知进行一次上传任务
     private fun toUploadFile(index: Int) {
         mHandler.sendEmptyMessage(index)
     }
 
     //在UI线程刷新适配器
-    private fun notifyAdapter(index:Int){
-        mActivity.runOnUiThread{
+    private fun notifyAdapter(index: Int) {
+        mActivity.runOnUiThread {
             uploadAdapter.notifyItemChanged(index)
         }
     }
 
     /**
      * 绑定RecycleView
+     * isLooker : true 不可编辑 false 可编辑
      * max 可上传内容的最大值
      */
-    fun addAdapter(mRecycle: RecyclerView, activity: Activity ) {
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun addAdapter(mRecycle: RecyclerView, activity: Activity) {
         mRecycle.layoutManager = GridLayoutManager(activity, 3)
         mRecycle.adapter = uploadAdapter
         uploadAdapter.checkAddItem()
@@ -83,37 +90,40 @@ class UpLoadFactory(var mActivity:Activity) {
     /**
      * 处理 onActivityResult 返回的数据
      */
+    @RequiresApi(Build.VERSION_CODES.N)
     fun onResultData(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == ResConfig.CAMERA_CODE) {
-            data?.apply {
-                var filePath = this.getStringExtra("path")
-                var mFileName = this.getStringExtra("fileName")
-                ResourcesBean().apply {
-                    mediaType = "video/mp4"
-                    filePath?.let {
-                        this.localPath = it
-                        this.fileSize = "${File(it).length() / 1024 / 1024}M"
-                    }
-                    this.state = ResourcesState.UPLOAD_START
-                    this.type = ResourcesType.VIDEO
-                    this.isUpload = false
-                    mFileName?.apply {
-                        fileName = this
-                    }
+        when (requestCode) {
+            uploadAdapter.mRequestCodeBean.mVideoCode -> {
+                data?.apply {
                     uploadAdapter.data.removeIf { it.type == ResourcesType.ADD }
-                    uploadAdapter.data.add(this)
-                    var mIndex = uploadAdapter.data.size
+                    uploadAdapter.data.add(getResourcesBean())
                     uploadAdapter.checkAddItem()
-                    toUploadFile(mIndex - 1)
+                    if (!checkUploadIng()) {
+                        toUploadFile(0)
+                    }
                 }
             }
-
-        } else {
-            val selectList = PictureSelector.obtainMultipleResult(data)
-            Log.e("metaRTC", "${Gson().toJson(selectList)}")
-            uploadAdapter.addResources(selectList)
-            toUploadFile(0)
+            uploadAdapter.mRequestCodeBean.mPictureCode,
+            uploadAdapter.mRequestCodeBean.mChooseVideoCode,
+            uploadAdapter.mRequestCodeBean.mChoosePictureCode -> {
+                val selectList = PictureSelector.obtainMultipleResult(data)
+                uploadAdapter.addResources(selectList)
+                if (!checkUploadIng()) {
+                    toUploadFile(0)
+                }
+            }
         }
+    }
+
+
+    fun checkUploadIng(): Boolean {
+        var state = false
+        uploadAdapter.data.forEach {
+            if (it.state == ResourcesState.UPLOAD_ING) {
+                state = true
+            }
+        }
+        return state
     }
 
 
@@ -121,9 +131,10 @@ class UpLoadFactory(var mActivity:Activity) {
      * 赋值
      * 一般用于详情时读取远程文件
      */
-   fun setData(mList:MutableList<ResourcesBean>){
-       uploadAdapter.data.addAll(mList)
-       uploadAdapter.checkAddItem()
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun setData(mList: MutableList<ResourcesBean>) {
+        uploadAdapter.data.addAll(mList)
+        uploadAdapter.checkAddItem()
     }
 
 
@@ -133,7 +144,7 @@ class UpLoadFactory(var mActivity:Activity) {
     fun getMediaData(): MutableList<ResourcesBean> {
         var mList = mutableListOf<ResourcesBean>()
         uploadAdapter.data.forEach {
-            if(it.type != ResourcesType.ADD){
+            if (it.type != ResourcesType.ADD) {
                 mList.add(it)
             }
         }
@@ -145,16 +156,16 @@ class UpLoadFactory(var mActivity:Activity) {
      * 设置弹出框的内容
      * 默认 全功能
      */
-    fun setDialogList(list:MutableList<ChooseActionState>){
-       DIALOG_ACTION_LIST.clear()
-        DIALOG_ACTION_LIST.addAll(list)
+    fun setDialogList(list: MutableList<ChooseActionState>) {
+        uploadAdapter.actionStateList.clear()
+        uploadAdapter.actionStateList.addAll(list)
     }
 
     /**
      * 设置视频（拍摄和选择）的时长
      * 默认15S
      */
-    fun setVideoMaxSecond(mMaxSecond:Int){
+    fun setVideoMaxSecond(mMaxSecond: Int) {
         VIDEO_MAX_SECOND = mMaxSecond
     }
 
@@ -163,7 +174,7 @@ class UpLoadFactory(var mActivity:Activity) {
      * true 不可编辑
      * false 可编辑
      */
-    fun setLooker(looker:Boolean){
+    fun setLooker(looker: Boolean) {
         IS_LOOKER = looker
     }
 
@@ -171,7 +182,7 @@ class UpLoadFactory(var mActivity:Activity) {
      * 设置最大数量
      * 默认 9
      */
-    fun setMax(max:Int){
+    fun setMax(max: Int) {
         FILE_MAX = max
     }
 
@@ -179,7 +190,7 @@ class UpLoadFactory(var mActivity:Activity) {
      * 设置视频大小内存 M
      * 默认 100M
      */
-    fun setVideoMaxSize(size:Float){
+    fun setVideoMaxSize(size: Float) {
         VIDEO_MAX_SIZE = size
     }
 
@@ -187,11 +198,16 @@ class UpLoadFactory(var mActivity:Activity) {
      * 设置图片最大内存 M
      * 默认5M
      */
-    fun setPictureMaxSize(size:Float){
+    fun setPictureMaxSize(size: Float) {
         PICTURE_MAX_SIZE = size
     }
 
-
+    /**
+     * 同一个Activity有多个选择文件的时候定义requestCode
+     */
+    fun setRequestCode(mBean: RequestCodeBean) {
+        uploadAdapter.mRequestCodeBean = mBean
+    }
 
 
 }

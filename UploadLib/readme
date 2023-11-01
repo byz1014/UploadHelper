@@ -45,3 +45,6 @@
       设置可选择图片的最大内存
       upLoadFactory.setPictureMaxSize(size:Float)
 
+      同一个Activity有多个选择文件的时候定义requestCode
+      upLoadFactory.setRequestCode(mBean: RequestCodeBean)
+

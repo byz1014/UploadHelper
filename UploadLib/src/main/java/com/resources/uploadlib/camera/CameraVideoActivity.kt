@@ -16,8 +16,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.resources.uploadlib.R
-import com.resources.uploadlib.VIDEO_MAX_SECOND
 import com.resources.uploadlib.databinding.ActivityCameraVideoBinding
+import com.resources.uploadlib.util.VIDEO_MAX_SECOND
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import java.io.File
 

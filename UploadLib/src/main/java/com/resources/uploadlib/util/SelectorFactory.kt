@@ -4,8 +4,6 @@ import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import com.luck.picture.lib.entity.LocalMedia
-import com.resources.uploadlib.PICTURE_MAX_SIZE
-import com.resources.uploadlib.VIDEO_MAX_SIZE
 import com.resources.uploadlib.bean.ResourcesBean
 import com.resources.uploadlib.choose.ResourcesState
 import com.resources.uploadlib.choose.ResourcesType
@@ -25,7 +23,7 @@ var mediaPictureList = mutableListOf<LocalMedia>()
 /**
  * 选择图片
  */
-fun PictureSelector.ChoosePicture(max:Int) {
+fun PictureSelector.ChoosePicture(max:Int,mCode:Int = PictureConfig.TYPE_IMAGE) {
     var sum = if(max > 9) 9 else max
     openGallery(PictureMimeType.ofImage())
         .imageEngine(GlideEngine())
@@ -36,13 +34,13 @@ fun PictureSelector.ChoosePicture(max:Int) {
         .queryMaxFileSize(PICTURE_MAX_SIZE)//设置能够选择的视频大小 单位M
         .minimumCompressSize(300)// 小于300kb的图片不压缩
         .isCompress(true)
-        .forResult(PictureConfig.TYPE_IMAGE)
+        .forResult(mCode)
 }
 
 /**
  * 选择视频
  */
-fun PictureSelector.ChooseVideo(max:Int,videoMaxSecond:Int) {
+fun PictureSelector.ChooseVideo(max:Int,videoMaxSecond:Int,mCode:Int = PictureConfig.TYPE_VIDEO) {
     var sum = if(max > 3) 3 else max
     openGallery(PictureMimeType.ofVideo())
         .imageEngine(GlideEngine())
@@ -53,17 +51,17 @@ fun PictureSelector.ChooseVideo(max:Int,videoMaxSecond:Int) {
         .queryMaxFileSize(VIDEO_MAX_SIZE)//设置能够选择的视频大小 单位M
         .maxVideoSelectNum(sum)
         .videoMaxSecond(videoMaxSecond) //视频最多30s
-        .forResult(PictureConfig.TYPE_VIDEO)
+        .forResult(mCode)
 }
 
 /**
  * 拍照
  */
-fun PictureSelector.TakePhoto(){
-   openCamera(PictureMimeType.ofImage())
+fun PictureSelector.TakePhoto(mCode:Int = ResConfig.PHOTO_CODE){
+    openCamera(PictureMimeType.ofImage())
         .isCompress(true)
         .minimumCompressSize(100)
-        .forResult(ResConfig.PHOTO_CODE)
+        .forResult(mCode)
 }
 
 /**
@@ -73,7 +71,7 @@ fun LocalMedia.LocalMedia2ResourcesBean():ResourcesBean{
     if (mimeType.contains("image")) {
         return  ResourcesBean().apply {
             this.type = ResourcesType.PICTURE
-            this.state = ResourcesState.UPLOAD_ING
+            this.state = ResourcesState.UPLOAD_START
             this.mediaType = mimeType
             this.localPath = compressPath
             this.fileSize = "${(this@LocalMedia2ResourcesBean.size.toFloat() / 1024.0f / 1024.0f)}M"
@@ -81,7 +79,7 @@ fun LocalMedia.LocalMedia2ResourcesBean():ResourcesBean{
     } else if (mimeType.contains("video")) {
         return ResourcesBean().apply {
             this.type = ResourcesType.VIDEO
-            this.state = ResourcesState.UPLOAD_ING
+            this.state = ResourcesState.UPLOAD_START
             this.mediaType = mimeType
             this.localPath = realPath
             this.fileSize = "${(this@LocalMedia2ResourcesBean.size.toFloat() / 1024.0f / 1024.0f)}M"

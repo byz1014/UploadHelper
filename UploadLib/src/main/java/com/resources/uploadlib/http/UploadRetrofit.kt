@@ -24,8 +24,8 @@ class UploadRetrofit {
             override fun intercept(chain: Interceptor.Chain): Response {
                 chain.let {
                     val original: Request = it.request()
-                    val request = original.newBuilder()
-                        .addHeader("X_TICKET", getSessionId())
+                    val request = original.newBuilder()//getSessionId()
+                        .addHeader("X_TICKET", "f3f3fd7994fb460081ff2f9fc6090f3c_2:db3408c1022f4e53ac389dfbe0b21f7a")
                         .method(original.method, original.body)
                         .build()
                     return it.proceed(request)
@@ -42,7 +42,7 @@ class UploadRetrofit {
 
 
     val mRetrofit by lazy{
-        Retrofit.Builder().baseUrl("----YOUR HTTP ADDRESS-----")
+        Retrofit.Builder().baseUrl("http://192.162.130.34:9511/")
         .addConverterFactory(GsonConverterFactory.create())
         .addConverterFactory(ScalarsConverterFactory.create())
         .client(okHttpClient.build())

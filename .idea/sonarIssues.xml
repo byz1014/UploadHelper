@@ -293,6 +293,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/util/UploadUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/UploadLib/src/main/java/com/resources/uploadlib/vide/CircleProgressBar.java">
           <value>
             <set />
@@ -604,6 +609,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/choose/ChooseActionState.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/UploadLib/src/main/java/com/resources/uploadlib/gallery/PreviewFragment.kt">
           <value>
             <set />
           </value>

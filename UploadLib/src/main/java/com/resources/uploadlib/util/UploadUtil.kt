@@ -1,7 +1,8 @@
-package com.resources.uploadlib
+package com.resources.uploadlib.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
@@ -9,13 +10,16 @@ import androidx.annotation.RequiresApi
 import com.blankj.utilcode.util.ToastUtils
 import com.google.gson.Gson
 import com.luck.picture.lib.entity.LocalMedia
+import com.resources.uploadlib.ChooseDialog
 import com.resources.uploadlib.adapter.UploadAdapter
+import com.resources.uploadlib.bean.RequestCodeBean
 import com.resources.uploadlib.bean.ResourcesBean
 import com.resources.uploadlib.choose.ChooseActionState
 import com.resources.uploadlib.choose.ResourcesState
 import com.resources.uploadlib.choose.ResourcesType
 import com.resources.uploadlib.http.UpLoadTask
 import com.resources.uploadlib.util.LocalMedia2ResourcesBean
+import java.io.File
 
 
 /**
@@ -25,39 +29,25 @@ import com.resources.uploadlib.util.LocalMedia2ResourcesBean
  * @info
  */
 
-/**
- * 开启一个上传任务
- */
+
 fun ResourcesBean.onUpLoad(outAction: (mBean: ResourcesBean) -> Unit) {
     UpLoadTask(outAction).initUploadTask(this)
 }
 
-/**
- * 这是一个添加入口
- */
 var addResourcesBean = ResourcesBean().apply {
     this.type = ResourcesType.ADD
     this.isUpload = true
     this.state = ResourcesState.UPLOAD_SUCCESS
 }
 
-
-/**
- * 调用弹框选择功能
- */
-fun Activity.showChooseDialog(sum: Int) {
-     ChooseDialog(this, DIALOG_ACTION_LIST.apply {
-         if(isEmpty()){
-             DIALOG_ACTION_LIST.addAll(mStateList)
-         }
-     }).apply {
+fun Activity.showChooseDialog(sum: Int,mList:MutableList<ChooseActionState>,mBean: RequestCodeBean) {
+    ChooseDialog(this, mList).apply {
+        this.mRequestCodeBean = mBean
         show(sum)
     }
 }
 
-/**
- * 每次添加或删除时检查是否要显示添加入口
- */
+@RequiresApi(Build.VERSION_CODES.N)
 fun UploadAdapter.checkAddItem(start: Int = -1) {
     data.removeIf { it.type == ResourcesType.ADD }
     if (IS_LOOKER) {
@@ -80,8 +70,29 @@ fun UploadAdapter.checkAddItem(start: Int = -1) {
 }
 
 /**
- * LocalMedia对象转换成我们需要的ResourcesBean 并添加到Adapter体现在页面上
+ * 处理拍照返回
  */
+fun Intent.getResourcesBean():ResourcesBean{
+    var filePath = this.getStringExtra("path")
+    var mFileName = this.getStringExtra("fileName")
+    return ResourcesBean().apply {
+        mediaType = "video/mp4"
+        filePath?.let {
+            this.localPath = it
+            this.fileSize = "${File(it).length() / 1024 / 1024}M"
+        }
+        this.state = ResourcesState.UPLOAD_START
+        this.type = ResourcesType.VIDEO
+        this.isUpload = false
+        mFileName?.apply {
+            fileName = this
+        }
+    }
+}
+
+
+
+@RequiresApi(Build.VERSION_CODES.N)
 fun UploadAdapter.addResources(resList: List<LocalMedia>) {
     Log.e("metaRTC", "--------------   ${resList.size}")
     data.removeIf { it.type == ResourcesType.ADD }
@@ -103,16 +114,13 @@ fun UploadAdapter.addResources(resList: List<LocalMedia>) {
     checkAddItem()
 }
 
-/**
- * 公共配置
- */
 var VIDEO_MAX_SECOND = 15//视频最大时长
 var IS_LOOKER = false //是否只读
-var FILE_MAX = 9//文件最大数量
-var VIDEO_MAX_SIZE = 500.0F//视频最大内存 M
+var FILE_MAX = 10009//文件最大数量
+var VIDEO_MAX_SIZE = 260.0F//视频最大内存 M
 var PICTURE_MAX_SIZE = 5.0F//图片大小 M
-var DIALOG_ACTION_LIST = arrayListOf<ChooseActionState>()
-var mStateList = mutableListOf<ChooseActionState>(//弹框内容
+
+var mStateList = mutableListOf<ChooseActionState>(
     ChooseActionState.CHOOSE_CAMERA,
     ChooseActionState.CHOOSE_PICTURE,
     ChooseActionState.CHOOSE_VIDEO,

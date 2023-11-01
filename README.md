@@ -16,7 +16,8 @@
   注意：目前网络请求部分没有对外开放需要在代码中修改
   为避免同时多文件上传出现内存溢出的情况这里采用的是串行的上传方式
   使用方法：
-      val upLoadFactory by lazy { UpLoadFactory( this) } //懒加载的方式创建upLoadFactory对象
+     //懒加载的方式创建upLoadFactory对象
+      val upLoadFactory by lazy { UpLoadFactory( this) } 
 
       绑定RecycleView和Activity 这里一定要是Activity因为后面的Dialog必须绑定到Activity
       upLoadFactory.addAdapter(recycleView,activity)
@@ -47,4 +48,7 @@
 
       设置可选择图片的最大内存
       upLoadFactory.setPictureMaxSize(size:Float)
+      
+      同一个Activity有多个选择文件的时候定义requestCode
+      upLoadFactory.setRequestCode(mBean: RequestCodeBean)
 

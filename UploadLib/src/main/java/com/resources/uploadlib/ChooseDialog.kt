@@ -2,23 +2,17 @@ package com.resources.uploadlib
 
 import android.Manifest
 import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
-import androidx.core.content.PermissionChecker.checkPermission
 import androidx.databinding.DataBindingUtil
 import com.blankj.utilcode.util.PermissionUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.luck.picture.lib.PictureSelector
 import com.resources.uploadlib.base.BaseDialog
 import com.resources.uploadlib.bean.RequestCodeBean
-import com.resources.uploadlib.camera.CameraVideoActivity
 import com.resources.uploadlib.choose.ChooseActionState
 import com.resources.uploadlib.databinding.ActionItemBinding
 import com.resources.uploadlib.databinding.DialogChooseBinding
 import com.resources.uploadlib.util.*
-import kotlin.math.max
 
 
 /**
@@ -89,6 +83,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
 
     fun onItemClick(mState: ChooseActionState) {
         dismiss()
+
         when (mState) {
             ChooseActionState.CHOOSE_VIDEO -> {//选择视频
                 PermissionUtils.permission(
@@ -138,17 +133,8 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
             }
         }
 
-        mListener?.apply {
-            onActionItem(mState)
-        }
     }
 
-
-    var mListener: OnChooseItemListener? = null
-
-    interface OnChooseItemListener {
-        fun onActionItem(state: ChooseActionState)
-    }
 
 
     fun setVideoMaxSecond(maxSecond:Int){

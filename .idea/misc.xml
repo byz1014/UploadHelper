@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/gitList/UploadHelper/UploadLib/src/main/res/layout/action_item.xml" value="0.1" />
+        <entry key="..\:/gitList/UploadHelper/UploadLib/src/main/res/layout/adapter_upload_item.xml" value="0.14895833333333333" />
         <entry key="..\:/selfProject/UpDataPictureDemo/UploadLib/src/main/res/drawable/layer_progress_drawable.xml" value="0.1" />
         <entry key="..\:/selfProject/UpDataPictureDemo/UploadLib/src/main/res/drawable/shape_dialog_bg.xml" value="0.104" />
         <entry key="..\:/selfProject/UpDataPictureDemo/UploadLib/src/main/res/drawable/shape_mask_7f.xml" value="0.1105" />

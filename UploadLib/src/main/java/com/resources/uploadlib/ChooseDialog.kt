@@ -18,6 +18,7 @@ import com.resources.uploadlib.choose.ChooseActionState
 import com.resources.uploadlib.databinding.ActionItemBinding
 import com.resources.uploadlib.databinding.DialogChooseBinding
 import com.resources.uploadlib.util.*
+import kotlin.math.max
 
 
 /**
@@ -29,7 +30,11 @@ import com.resources.uploadlib.util.*
 class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseActionState>) :
     BaseDialog<DialogChooseBinding>(mActivity) {
 
-    var mRequestCodeBean = RequestCodeBean()
+    private var VIDEO_MAX_SECOND = 15
+    private var PICTURE_MAX_SIZE = 5f
+    private var VIDEO_MAX_SIZE = 260f
+
+    private var mRequestCodeBean = RequestCodeBean()
 
     override fun isTouchOutCancel(): Boolean = true
 
@@ -38,18 +43,37 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
     override fun onWeight(binding: DialogChooseBinding) {
         binding.llItemBody.removeAllViews()
         actionList.forEach {
-            binding.llItemBody.addView(getItemView(it))
+            var mValue = when(it){
+                ChooseActionState.CHOOSE_PICTURE ->{
+                    "$PICTURE_MAX_SIZE"
+                }
+                ChooseActionState.CHOOSE_VIDEO ->{
+                    "$VIDEO_MAX_SIZE"
+                }
+                ChooseActionState.CHOOSE_CAMERA ->{
+                    "$VIDEO_MAX_SIZE"
+                }
+                ChooseActionState.CHOOSE_TAKE_PHOTO ->{
+                    "$PICTURE_MAX_SIZE"
+                }
+                else ->{
+                    "$VIDEO_MAX_SIZE"
+                }
+            }
+
+            binding.llItemBody.addView(getItemView(it,mValue))
             binding.tvCancel.setOnClickListener { dismiss() }
         }
     }
 
-    fun getItemView(actionState: ChooseActionState): View {
+    fun getItemView(actionState: ChooseActionState,mValue:String): View {
         return DataBindingUtil.inflate<ActionItemBinding>(
             LayoutInflater.from(mActivity),
             R.layout.action_item,
             null,
             false
         ).apply {
+            this.numValue = mValue
             this.mState = actionState
             this.mDialog = this@ChooseDialog
         }.root
@@ -73,7 +97,8 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 ).onPermission {
                     PictureSelector
                         .create(mActivity)
-                        .ChooseVideo(MAX, VIDEO_MAX_SECOND  * 1000,mRequestCodeBean.mChooseVideoCode)
+                        .ChooseVideo(MAX, VIDEO_MAX_SECOND  * 1000,
+                            mRequestCodeBean.mChooseVideoCode,VIDEO_MAX_SIZE)
                 }
             }
             ChooseActionState.CHOOSE_PICTURE -> {//选择图片
@@ -83,7 +108,8 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 ).onPermission {
                     PictureSelector
                         .create(mActivity)
-                        .ChoosePicture(MAX,mRequestCodeBean.mChoosePictureCode)
+                        .ChoosePicture(MAX,
+                            mRequestCodeBean.mChoosePictureCode,PICTURE_MAX_SIZE)
                 }
             }
             ChooseActionState.CHOOSE_PICTURE_AND_VIDEO -> {//选择图片和视频
@@ -108,16 +134,7 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
                 }
             }
             ChooseActionState.CHOOSE_CAMERA -> {//拍摄视频
-                PermissionUtils.permission(
-                    Manifest.permission.CAMERA,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.RECORD_AUDIO
-                ).onPermission {
-                    Intent(mActivity, CameraVideoActivity::class.java).apply {
-                        mActivity.startActivityForResult(this,mRequestCodeBean.mVideoCode)
-                    }
-                }
+                mActivity.toCamera(VIDEO_MAX_SECOND,mRequestCodeBean.mVideoCode)
             }
         }
 
@@ -134,16 +151,24 @@ class ChooseDialog(mActivity: Activity, var actionList: MutableList<ChooseAction
     }
 
 
-    fun PermissionUtils.onPermission(action: () -> Unit) {
-        callback(object :
-            PermissionUtils.SimpleCallback {
-            override fun onGranted() {
-                action()
-            }
-            override fun onDenied() {
-                ToastUtils.showShort("缺少必要权限，请手动授权")
-            }
-        }).request()
+    fun setVideoMaxSecond(maxSecond:Int){
+        VIDEO_MAX_SECOND = maxSecond
+    }
+
+    fun setVideoMaxSize(maxSize:Float){
+        VIDEO_MAX_SIZE = maxSize
+    }
+
+    fun setPictureMaxSize(maxSize:Float){
+        PICTURE_MAX_SIZE = maxSize
+    }
+
+    fun setRequestCodeBean(codeBean: RequestCodeBean){
+        mRequestCodeBean = codeBean
+    }
+
+    fun getDescribe(describe:String,value:String):String{
+        return String.format(describe,value)
     }
 
 }

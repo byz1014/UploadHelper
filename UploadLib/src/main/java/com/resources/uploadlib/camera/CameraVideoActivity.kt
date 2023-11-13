@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.resources.uploadlib.R
 import com.resources.uploadlib.databinding.ActivityCameraVideoBinding
-import com.resources.uploadlib.util.VIDEO_MAX_SECOND
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import java.io.File
 
@@ -28,8 +27,12 @@ import java.io.File
 class CameraVideoActivity : AppCompatActivity() {
     val mBinding: ActivityCameraVideoBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_camera_video) }
     val mCameraXUtil by lazy {  CameraXUtil(this@CameraVideoActivity,mBinding.pvView) }
+    var maxSecond = 60
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        maxSecond = intent.getIntExtra("maxTime",60)
         mBinding.apply {
             mActivity = this@CameraVideoActivity
             isVideoIng = false
@@ -45,7 +48,7 @@ class CameraVideoActivity : AppCompatActivity() {
             })
         }
 
-        mBinding.mTime = "${mCameraXUtil.getFromTime(0)}/${mCameraXUtil.getFromTime(VIDEO_MAX_SECOND)}"
+        mBinding.mTime = "${mCameraXUtil.getFromTime(0)}/${mCameraXUtil.getFromTime(maxSecond)}"
         mBinding.cbVideoSwitch.setOnCheckedChangeListener { p0, p1 ->
             if(p1){
                 valueTime = 0
@@ -84,12 +87,12 @@ class CameraVideoActivity : AppCompatActivity() {
             return@Handler  true
         }
         valueTime++
-        if(valueTime> VIDEO_MAX_SECOND){
+        if(valueTime> maxSecond){
             stopReport()
             return@Handler  true
         }
         sendHandler()
-        mBinding.mTime = "${mCameraXUtil.getFromTime(valueTime)}/${mCameraXUtil.getFromTime(VIDEO_MAX_SECOND)}"
+        mBinding.mTime = "${mCameraXUtil.getFromTime(valueTime)}/${mCameraXUtil.getFromTime(maxSecond)}"
         return@Handler  true
     }
 
@@ -130,6 +133,11 @@ class CameraVideoActivity : AppCompatActivity() {
      * 播放视频
      */
     fun showVideo(url:String){
+        Log.e("byzLogger",url)
+        File(url).apply {
+            Log.e("byzLogger","${this.name}   ${length().toFloat()/1024/1024}")
+        }
+
         var thumbImageView = ImageView(this)
         thumbImageView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
         url.getFirstFrame()?.apply {

@@ -7,6 +7,7 @@ import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.google.gson.Gson
 import com.luck.picture.lib.entity.LocalMedia
@@ -40,22 +41,19 @@ var addResourcesBean = ResourcesBean().apply {
     this.state = ResourcesState.UPLOAD_SUCCESS
 }
 
-fun Activity.showChooseDialog(sum: Int,mList:MutableList<ChooseActionState>,mBean: RequestCodeBean) {
-    ChooseDialog(this, mList).apply {
-        this.mRequestCodeBean = mBean
-        show(sum)
-    }
+fun Activity.showChooseDialog(mList:MutableList<ChooseActionState>) {
+    ChooseDialog(this, mList)
 }
 
 @RequiresApi(Build.VERSION_CODES.N)
-fun UploadAdapter.checkAddItem(start: Int = -1) {
+fun UploadAdapter.checkAddItem(start: Int = -1, fileMax:Int = 10000) {
     data.removeIf { it.type == ResourcesType.ADD }
-    if (IS_LOOKER) {
+    if (getIsLooker()) {
         notifyDataSetChanged()
         return
     }
     if (data.size > 0) {
-        if (data[data.size - 1].type != ResourcesType.ADD && data.size < FILE_MAX) {
+        if (data[data.size - 1].type != ResourcesType.ADD && data.size < fileMax) {
             data.add(addResourcesBean)
         }
     } else if (data.size == 0) {
@@ -64,8 +62,9 @@ fun UploadAdapter.checkAddItem(start: Int = -1) {
 
     if (start == -1) {
         notifyDataSetChanged()
-    } else {
-        notifyItemRangeChanged(start, data.size)
+    } else {//删除任务
+        removeAt(start)
+        this.notifyItemRemoved(start)
     }
 }
 
@@ -114,18 +113,25 @@ fun UploadAdapter.addResources(resList: List<LocalMedia>) {
     checkAddItem()
 }
 
-var VIDEO_MAX_SECOND = 15//视频最大时长
-var IS_LOOKER = false //是否只读
-var FILE_MAX = 10009//文件最大数量
-var VIDEO_MAX_SIZE = 260.0F//视频最大内存 M
-var PICTURE_MAX_SIZE = 5.0F//图片大小 M
-
 var mStateList = mutableListOf<ChooseActionState>(
     ChooseActionState.CHOOSE_CAMERA,
     ChooseActionState.CHOOSE_PICTURE,
     ChooseActionState.CHOOSE_VIDEO,
     ChooseActionState.CHOOSE_TAKE_PHOTO
 )
+
+
+fun PermissionUtils.onPermission(action: () -> Unit) {
+    callback(object :
+        PermissionUtils.SimpleCallback {
+        override fun onGranted() {
+            action()
+        }
+        override fun onDenied() {
+            ToastUtils.showShort("缺少必要权限，请手动授权")
+        }
+    }).request()
+}
 /**
  * 1.编辑 只读
  * 2.最大数量

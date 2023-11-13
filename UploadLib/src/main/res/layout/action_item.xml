@@ -9,6 +9,9 @@
         <variable
             name="mDialog"
             type="com.resources.uploadlib.ChooseDialog" />
+        <variable
+            name="numValue"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -36,7 +39,7 @@
             android:includeFontPadding="false"
             android:textColor="#8F95A5"
             android:textSize="12sp"
-            tools:text="@{mState.describe}" />
+            tools:text="@{mDialog.getDescribe(mState.describe,numValue)}" />
 
         <View
             android:layout_width="match_parent"

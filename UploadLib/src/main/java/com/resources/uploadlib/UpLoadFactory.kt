@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ToastUtils
 import com.google.gson.Gson
 import com.luck.picture.lib.PictureSelector
 import com.resources.uploadlib.adapter.UploadAdapter
@@ -30,9 +31,15 @@ import java.io.File
  * @blame Android Team
  * @info
  */
-class UpLoadFactory(var mActivity: Activity) {
+class UpLoadFactory(var mActivity: Activity, var loginError: () -> Unit) {
 
-    private val uploadAdapter by lazy { UploadAdapter(arrayListOf()) }
+    var loginFail = false
+
+    private val uploadAdapter by lazy {
+        UploadAdapter(arrayListOf()) {//登陆信息异常
+            loginFail = true
+        }
+    }
 
     //初始化上传任务
     private val mUpLoadTask by lazy {
@@ -43,6 +50,14 @@ class UpLoadFactory(var mActivity: Activity) {
                     index
                 ).state == ResourcesState.UPLOAD_ING
             ) {
+                return@UpLoadTask
+            }
+
+            if (it.state == ResourcesState.UPLOAD_LOGIN_FAIL) {
+                loginFail = true
+            }
+            if (loginFail) {
+                loginError()
                 return@UpLoadTask
             }
             toUploadFile(index + 1)
@@ -84,7 +99,7 @@ class UpLoadFactory(var mActivity: Activity) {
     fun addAdapter(mRecycle: RecyclerView, activity: Activity) {
         mRecycle.layoutManager = GridLayoutManager(activity, 3)
         mRecycle.adapter = uploadAdapter
-        uploadAdapter.checkAddItem()
+        uploadAdapter.checkAddItem( )
     }
 
     /**
@@ -97,7 +112,7 @@ class UpLoadFactory(var mActivity: Activity) {
                 data?.apply {
                     uploadAdapter.data.removeIf { it.type == ResourcesType.ADD }
                     uploadAdapter.data.add(getResourcesBean())
-                    uploadAdapter.checkAddItem()
+                    uploadAdapter.checkAddItem( )
                     if (!checkUploadIng()) {
                         toUploadFile(0)
                     }
@@ -134,7 +149,7 @@ class UpLoadFactory(var mActivity: Activity) {
     @RequiresApi(Build.VERSION_CODES.N)
     fun setData(mList: MutableList<ResourcesBean>) {
         uploadAdapter.data.addAll(mList)
-        uploadAdapter.checkAddItem()
+        uploadAdapter.checkAddItem( )
     }
 
 
@@ -166,7 +181,7 @@ class UpLoadFactory(var mActivity: Activity) {
      * 默认15S
      */
     fun setVideoMaxSecond(mMaxSecond: Int) {
-        VIDEO_MAX_SECOND = mMaxSecond
+        uploadAdapter.setVideoMaxSecond(mMaxSecond)
     }
 
     /**
@@ -175,7 +190,7 @@ class UpLoadFactory(var mActivity: Activity) {
      * false 可编辑
      */
     fun setLooker(looker: Boolean) {
-        IS_LOOKER = looker
+        uploadAdapter.setIsLooker(looker)
     }
 
     /**
@@ -183,7 +198,7 @@ class UpLoadFactory(var mActivity: Activity) {
      * 默认 9
      */
     fun setMax(max: Int) {
-        FILE_MAX = max
+        uploadAdapter.setFileMax(max)
     }
 
     /**
@@ -191,7 +206,7 @@ class UpLoadFactory(var mActivity: Activity) {
      * 默认 100M
      */
     fun setVideoMaxSize(size: Float) {
-        VIDEO_MAX_SIZE = size
+        uploadAdapter.setVideoMaxSize(size)
     }
 
     /**
@@ -199,7 +214,7 @@ class UpLoadFactory(var mActivity: Activity) {
      * 默认5M
      */
     fun setPictureMaxSize(size: Float) {
-        PICTURE_MAX_SIZE = size
+        uploadAdapter.setPictureMaxSize(size)
     }
 
     /**
@@ -208,6 +223,7 @@ class UpLoadFactory(var mActivity: Activity) {
     fun setRequestCode(mBean: RequestCodeBean) {
         uploadAdapter.mRequestCodeBean = mBean
     }
+
 
 
 }

@@ -25,7 +25,7 @@ class UploadRetrofit {
                 chain.let {
                     val original: Request = it.request()
                     val request = original.newBuilder()//getSessionId()
-                        .addHeader("X_TICKET", "f3f3fd7994fb460081ff2f9fc6090f3c_2:db3408c1022f4e53ac389dfbe0b21f7a")
+                        .addHeader("X_TICKET", "f3f3fd7994fb460081ff2f9fc6090f3c_2:cc67e7305b8e494b8c0d1a0060a2dbcc")
                         .method(original.method, original.body)
                         .build()
                     return it.proceed(request)

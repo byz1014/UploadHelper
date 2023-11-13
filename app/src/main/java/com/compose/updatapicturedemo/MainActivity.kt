@@ -11,10 +11,14 @@ import com.resources.uploadlib.bean.ResourcesBean
 
 class MainActivity : AppCompatActivity() {
     val resList = mutableListOf<ResourcesBean>()
-    val upLoadFactory by lazy { UpLoadFactory( this) }
+    val upLoadFactory by lazy {
+        UpLoadFactory(this) {
 
-    val rvBody:RecyclerView by lazy { findViewById(R.id.rv_body) }
-    val tv_message:TextView by lazy { findViewById(R.id.tv_message) }
+        }
+    }
+
+    val rvBody: RecyclerView by lazy { findViewById(R.id.rv_body) }
+    val tv_message: TextView by lazy { findViewById(R.id.tv_message) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 //        tv_message.setOnClickListener {
 //        }
 
-        upLoadFactory.addAdapter(rvBody,this)
+        upLoadFactory.addAdapter(rvBody, this)
     }
 
 

@@ -61,13 +61,22 @@ open class UpLoadTask(var outAction: (mBean: ResourcesBean) -> Unit) : ViewModel
             .createFormData("file", videoFile.name, mProgressBody)
         UploadRetrofit().uploadApi.uploadFile(videoPart)
             .enqueue(uploadCallBack(this) { bean, resultBean ->
-                if (resultBean.code == 200) {
-                    bean.isUpload = true
-                    bean.httpPath = resultBean.data.url
-                    bean.id = resultBean.data.adjunctId
-                    bean.state = ResourcesState.UPLOAD_SUCCESS
-                } else {
+                when(resultBean.code){
+                    200->{
+                        bean.isUpload = true
+                        bean.httpPath = resultBean.data.url
+                        bean.id = resultBean.data.adjunctId
+                        bean.state = ResourcesState.UPLOAD_SUCCESS
+                    }
+                    401->{
+                        bean.state = ResourcesState.UPLOAD_LOGIN_FAIL
+                    }
+                    -579->{
+                        bean.state = ResourcesState.UPLOAD_HTTP_FAIL
+                    }
+                    else->{
                     bean.state = ResourcesState.UPLOAD_FAIL
+                    }
                 }
                 outAction(bean)
             })

@@ -37,11 +37,11 @@ class CameraXUtil(var mContext: AppCompatActivity, var surfaceProv: PreviewView)
 //            .setTargetAspectRatio(AspectRatio.RATIO_4_3)
             .setTargetResolution(Size(mContext.width(), mContext.height()))
             .setAudioRecordSource(MediaRecorder.AudioSource.MIC)
-            .setBitRate(1000 * 1024)
+            .setBitRate(3000 * 1024 * 1) // 3*8*1000*1024
             .setVideoFrameRate(30)
             .setTargetRotation(ROTATION_0)
             .build()
-    }//录像用例
+    }//录像用例 24000     29.76   4 13.7  5
 
     var mCameraControl: CameraControl? = null
 

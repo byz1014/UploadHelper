@@ -86,7 +86,7 @@
             android:gravity="center"
             android:onClick="@{() -> mAdapter.onItemClick(mPosition,-1)}"
             android:orientation="horizontal"
-            android:visibility="@{mResourcesBean.state == ResourcesState.UPLOAD_FAIL  ? View.VISIBLE:View.GONE}"
+            android:visibility="@{mResourcesBean.state == ResourcesState.UPLOAD_FAIL || mResourcesBean.state == ResourcesState.UPLOAD_LOGIN_FAIL   ? View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/riv_content"
             app:layout_constraintLeft_toLeftOf="@+id/riv_content"
             app:layout_constraintRight_toRightOf="@+id/riv_content"
@@ -112,5 +112,6 @@
             android:src="@mipmap/ic_upload_del"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </com.resources.uploadlib.view.SquareLayout>
 </layout>

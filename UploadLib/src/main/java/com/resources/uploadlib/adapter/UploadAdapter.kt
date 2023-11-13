@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import com.blankj.utilcode.util.ToastUtils
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
@@ -27,6 +28,7 @@ import com.resources.uploadlib.choose.ResourcesType
 import com.resources.uploadlib.databinding.AdapterUploadItemBinding
 import com.resources.uploadlib.gallery.GalleryPreviewActivity
 import com.resources.uploadlib.util.*
+import kotlin.math.max
 
 
 /**
@@ -35,8 +37,10 @@ import com.resources.uploadlib.util.*
  * @blame Android Team
  * @info
  */
-class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<ResourcesBean,
+class UploadAdapter(mList: MutableList<ResourcesBean>,var uploadAction:()->Unit) : BaseQuickAdapter<ResourcesBean,
         BaseDataBindingHolder<AdapterUploadItemBinding>>(R.layout.adapter_upload_item, mList) {
+
+
 
     var actionStateList = mutableListOf<ChooseActionState>().apply {
         add(ChooseActionState.CHOOSE_PICTURE)
@@ -44,11 +48,10 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
         add(ChooseActionState.CHOOSE_TAKE_PHOTO)
         add(ChooseActionState.CHOOSE_CAMERA)
     }
-    var mRequestCodeBean = RequestCodeBean()
+
+
     override fun convert(
-        holder: BaseDataBindingHolder<AdapterUploadItemBinding>,
-        item: ResourcesBean
-    ) {
+        holder: BaseDataBindingHolder<AdapterUploadItemBinding>,item: ResourcesBean ) {
 
         holder.dataBinding?.apply {
             this.isLooker = IS_LOOKER
@@ -106,17 +109,22 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
     fun onItemClick(position: Int, index: Int) {
         when (index) {
             0 -> {//删除
-                this.data.removeAt(position)
-                checkAddItem()
+//                this.data.removeAt(position)
+                if(data[position].state == ResourcesState.UPLOAD_ING){
+                    ToastUtils.showShort("上传中，不可删除")
+                    return
+                }
+                checkAddItem(position)
             }
             1 -> {//主图
                 when (getItem(position).type) {
                     ResourcesType.ADD -> {
-                        (context as Activity).showChooseDialog(
-                            FILE_MAX - data.size + 1,
-                            actionStateList,
-                            mRequestCodeBean
-                        )
+                        ChooseDialog((context as Activity),actionStateList).apply {
+                            setRequestCodeBean(mRequestCodeBean)
+                            setPictureMaxSize(PICTURE_MAX_SIZE)
+                            setVideoMaxSecond(VIDEO_MAX_SECOND)
+                            setVideoMaxSize(VIDEO_MAX_SIZE  )
+                        }.show(FILE_MAX - data.size + 1)
                     }
                     ResourcesType.PICTURE,
                     ResourcesType.VIDEO -> {
@@ -139,6 +147,9 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
                 getItem(position).state = ResourcesState.UPLOAD_START
                 notifyItemChanged(position)
                 getItem(position).onUpLoad {
+                    if(it.state == ResourcesState.UPLOAD_LOGIN_FAIL){
+                        uploadAction()
+                    }
                     getItemPosition(it).apply {
                         handler.post {
                             notifyItemChanged(this)
@@ -175,5 +186,34 @@ class UploadAdapter(mList: MutableList<ResourcesBean>) : BaseQuickAdapter<Resour
             }
         }.start()
     }
+
+    private var IS_LOOKER = false //是否只读
+    private var FILE_MAX = 10009//文件最大数量
+    private var VIDEO_MAX_SECOND = 15//视频最大时长
+    private var VIDEO_MAX_SIZE = 260.0F//视频最大内存 M
+    private var PICTURE_MAX_SIZE = 5.0F//图片大小 M
+    var mRequestCodeBean = RequestCodeBean()
+
+    fun setIsLooker(isLooker:Boolean){
+        this.IS_LOOKER = isLooker
+    }
+    fun getIsLooker():Boolean{
+        return  this.IS_LOOKER
+    }
+
+    fun setFileMax(fileMax:Int){
+        this.FILE_MAX = fileMax
+    }
+    fun setVideoMaxSecond(maxSecond:Int){
+        this.VIDEO_MAX_SECOND = maxSecond
+    }
+    fun setVideoMaxSize(maxSize:Float){
+        this.VIDEO_MAX_SIZE = maxSize
+    }
+    fun setPictureMaxSize(maxSize:Float){
+        this.PICTURE_MAX_SIZE = maxSize
+    }
+
+
 }
 

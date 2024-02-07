@@ -453,6 +453,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../selfProject/ChildSongModel/app/src/main/java/com/compose/childsongmodel/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../selfProject/ChildSongModel/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../selfProject/KeyboardDemo/app/build.gradle">
           <value>
             <set />
@@ -509,6 +519,266 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../selfProject/KeyboardDemo/keyboard/src/main/res/layout/layout_view.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/MainActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/MainViewModelApp.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/adapter/HomeMenuAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/adapter/HomeNoticeAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/adapter/MessageCenterAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/emergency/EmergencyViewModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/fragment/HomeFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/fragment/HomeViewModelApp.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/fragment/MessageCenterFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/fragment/MessageCenterVM.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/fragment/MineFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/fragment/MineViewModelApp.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/homemenu/HomeMenu.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/login/LoginActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/net/ServerApi.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/notice/NoticeListActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoChooseAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoChooseListActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoChooseListVM.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoFavoriteActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoFavoriteVM.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoPlayActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoSearchActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoSearchVm.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoSettingActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/VideoTabAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/adapter/CameraSearchAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/adapter/VideoAroundAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/adapter/VideoFavoriteAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/adapter/VideoSettingAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/player/VideoPlayViewModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/java/com/tayh/internalmanager/eeds/videocontrol/player/VideoSettingViewModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/activity_notice_list.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/activity_video_play.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/activity_video_setting.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/activity_wt_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/home_fragment.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/item_camera_favorite.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/item_home_menu.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/layout/mine_fragment.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/app/src/main/res/values/themes.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/baselibrary/src/main/java/com/tayh/baselibrary/BaseApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/baselibrary/src/main/java/com/tayh/baselibrary/base/BaseModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/commonResource/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/momentlibrary/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/momentlibrary/src/main/java/com/mcmo/z/moment/moment/library/exmple/MomentOperationHelper.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/momentlibrary/src/main/java/com/mcmo/z/moment/moment/library/exmple/opr/FileChooser.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-android/InternalManager-eeds/settings.gradle">
           <value>
             <set />
           </value>
@@ -619,6 +889,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/InternalManager/app/src/main/java/com/tayh/internalmanager/login/VpnSettingHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/InternalManager/app/src/main/java/com/tayh/internalmanager/main/videocontrol/adapter/VideoFavoriteAdapter.kt">
           <value>
             <set />
           </value>
@@ -823,6 +1098,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/EtcDutyActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/EtcDutyHistoryActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/activity/HandleCarRoadActivity.kt">
           <value>
             <set />
@@ -868,12 +1153,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/adapter/EtcDutyAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/bean/request/CollectFileRequest.kt">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/bean/request/EtcDutyRequest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/bean/request/SpecialCarRequest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/bean/result/EtcDutyDetailResult.kt">
           <value>
             <set />
           </value>
@@ -908,7 +1208,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/EtcDutyHistoryModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/EtcDutyModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/HandleCarRoadModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/java/com/compose/affairsjdz/model/SpecialCarModel.kt">
           <value>
             <set />
           </value>
@@ -968,6 +1283,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/activity_etc_duty.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/activity_etc_duty_history.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/activity_handle_car_road.xml">
           <value>
             <set />
@@ -989,6 +1314,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/adapter_collect_image.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/adapter_etc_duty.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../svn-project/app-toll-smart/app/src/main/res/layout/adapter_nav_item.xml">
           <value>
             <set />
           </value>

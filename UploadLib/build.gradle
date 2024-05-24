@@ -65,6 +65,6 @@ dependencies {
         force = true
     }
 
-    api 'com.blankj:utilcodex:+'
+    api 'com.blankj:utilcodex:1.31.1'
     api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.2.0-release-jitpack'
 }
